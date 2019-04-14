@@ -4,7 +4,7 @@ import axios from 'axios'
 const getMoviebyId=(movietitle)=>{
   return axios({
     method:'get',
-    url:`http://localhost:8080/movies/movies/${movietitle}`,
+    url:`http://localhost:8000/movies/movies/${movietitle}`,
   })
 }
 
@@ -12,7 +12,9 @@ const getMoviebyId=(movietitle)=>{
 const getAllMovies=()=>{
   return axios({
     method:'get',
-    url:`http://localhost:8080/movies/movies`,
+    url:`http://localhost:8000/movies/movies`,
+  }).then((data)=>{
+    return data.data
   })
 }
 
@@ -20,7 +22,7 @@ const getAllMovies=()=>{
 const getMoviebyGenre=(moviebygenre)=>{
   return axios({
     method:'get',
-    url:`http://localhost:8080/movies/genre/${moviebygenre}`,
+    url:`http://localhost:8000/movies/genre/${moviebygenre}`,
   })
 }
 
@@ -28,7 +30,7 @@ const getMoviebyGenre=(moviebygenre)=>{
 const getMovieComments=(moviecommentsbytitle)=>{
   return axios({
     method:'get',
-    url:`http://localhost:8080/movies/allcomments/${moviecommentsbytitle}`,
+    url:`http://localhost:8000/movies/allcomments/${moviecommentsbytitle}`,
   })
 }
 
@@ -36,7 +38,7 @@ const getMovieComments=(moviecommentsbytitle)=>{
 const getMovieRatings=(specificrating)=>{
   return axios({
     method:'get',
-    url:`http://localhost:8080/movies/allratings/${specificrating}`,
+    url:`http://localhost:8000/movies/allratings/${specificrating}`,
   })
 }
 
@@ -44,7 +46,7 @@ const getMovieRatings=(specificrating)=>{
 const postComment=(postcomment,moviekey)=>{
   return axios({
     method:'post',
-    url:`http://localhost:8080/comments/postcomment`,
+    url:`http://localhost:8000/comments/postcomment`,
     data:{
       text:postcomment,
       movie_id:moviekey
@@ -56,7 +58,7 @@ const postComment=(postcomment,moviekey)=>{
 const postRating=(starstruck,moviedataid)=>{
   return axios({
     method:'post',
-    url:`http://localhost:8080/comments/postcomment`,
+    url:`http://localhost:8000/ratings/ratings`,
     data:{
       stars:starstruck,
       movie_id:moviedataid

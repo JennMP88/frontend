@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {getAllMovies} from '../service/axios'
 
 class Movies extends Component {
   constructor(props) {
@@ -21,6 +22,26 @@ class Movies extends Component {
     //trigger axios
   }
 
+  componentDidMount(){
+    getAllMovies()
+    .then((response)=>{
+      console.log(response)
+      this.setState({list:response})
+    })  
+  }
+
+
+  //-------------
+ myCard=(props)=>{ 
+ console.log(props)
+ return (<div className="card" style={{ width: '18rem' }}>
+  <img src={props.everything.img_url} className="card-img-top" alt="..." />
+  <div className="card-body">
+    <h5 className="card-title">{props.everything.title}</h5>
+    <p className="card-text">Ratings</p>
+    {/* url and avg title */}
+  </div>
+ </div>)}
   render() {
 
     const { list, searchinput } = this.state
@@ -30,14 +51,14 @@ class Movies extends Component {
         <input type='text' value={this.state.searchinput} placeholder='search by title'  onChange={this.handleInput} />
         <button onClick={this.handleClick}>Search</button>
       </p>
-      <div className="card" style={{ width: '18rem' }}>
-        <img src="..." class="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 class="card-title">Movie Title</h5>
-          <p className="card-text">Something something card title</p>
-          {/* url and avg title */}
-        </div>
-      </div>
+
+      {
+        this.state.list.map((e,i)=>{
+        return   <this.myCard everything={e} key={i}/> 
+        })
+      
+      }
+     
     </>
     )
   }
