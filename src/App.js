@@ -2,6 +2,7 @@ import React,{Component} from 'react'
 import { HashRouter,Route} from 'react-router-dom'; 
 import Header from './components/header'
 import Movies from './containers/allmovies'
+import Genre from './containers/bygenre'
 
 class App extends Component {
   constructor(props) {
@@ -18,6 +19,7 @@ render(){
       <HashRouter> 
       <Header/>
       <Route path='/allmovies'component={Movies} />
+      <Route path='/bygenre'component={Genre} />
       </HashRouter>
       </>
     )

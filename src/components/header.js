@@ -6,26 +6,14 @@ import { Link } from 'react-router-dom'
     constructor(props) {
       super(props)
       this.state = {
-        list: [],
-        searchinput: ''
+        
       }
     }
   
   
-  handleInput = (e) => {
-    this.setState({ searchinput: e.target.value })
-  }
-
-  handleClick = (e) => {
-    // console.log('clicked')
-    const { list, searchinput } = this.state;
-    list.push(searchinput)
-    this.setState({ list, searchinput: '' })
-  }
-
   render() {
     console.log(this.state)
-    const { list, searchinput } = this.state
+   
 
     return (<>
       <div className="jumbotron jumbotron-fluid">
@@ -45,14 +33,6 @@ import { Link } from 'react-router-dom'
               <li className="nav-item">
                 <Link className="nav-link" to="/bygenre">By Genre </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/byid">Movies by Id </Link>
-              </li>
-              <p>
-                <input type='text' value={this.state.searchinput} onChange={this.handleInput} />
-                <button onClick={this.handleClick}>Search</button>
-              </p>
-
             </ul>
           </nav>
 
